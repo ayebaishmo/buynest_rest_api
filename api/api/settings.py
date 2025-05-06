@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "returns",
     "settlement",
     "vendor",
+    "rest_framework"
 ]
 
 MIDDLEWARE = [
