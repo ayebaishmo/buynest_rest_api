@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
-
+from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -82,16 +82,29 @@ WSGI_APPLICATION = "api.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": "buynest_db",
+#         "USER": "user_ad",
+#         "PASSWORD": "enter",
+#         "HOST": "localhost",
+#         "PORT": "3306"
+#     }
+# }
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "buynest_db",
-        "USER": "user_ad",
-        "PASSWORD": "enter",
-        "HOST": "localhost",
-        "PORT": "3306"
+        "NAME": config("MYSQL_DATABASE"),
+        "USER": config("MYSQL_USER"),
+        "PASSWORD": config("MYSQL_PASSWORD"),
+        "HOST": config("MYSQL_HOST"),
+        "PORT": config("MYSQL_PORT", default="3306"),
     }
 }
+
+
 
 
 # Password validation
