@@ -3,7 +3,7 @@ services:
     name: my-django-app
     env: python
     buildCommand: pipenv install && python manage.py collectstatic --noinput && python manage.py migrate --noinput
-    startCommand: pipenv run gunicorn your_project_name.wsgi:application
+    startCommand: pipenv run gunicorn api.wsgi:application
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: API.settings
